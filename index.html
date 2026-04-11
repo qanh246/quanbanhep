@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bánh Ép Huế - Hương vị dân dã cố đô</title>
+<style>
+*{box-sizing:border-box; scroll-behavior:smooth;}
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#fffaf5;
+    color:#333;
+}
+header{
+    background:linear-gradient(90deg,#ffb703,#fb8500,#d62828);
+    color:white;
+    padding:15px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+.logo{
+    font-size:28px;
+    font-weight:bold;
+}
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:0 12px;
+    font-weight:bold;
+}
+nav a:hover{ text-decoration:underline; }
+
+.banner{
+    height:500px;
+    background:url("ảnh giới thiệu.jpg") center/cover;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    text-shadow:2px 2px 8px black;
+    text-align:center;
+}
+.banner h1{
+    font-size:50px;
+}
+section{
+    padding:60px 10%;
+}
+h2{
+    color:#d62828;
+    margin-bottom:20px;
+}
+.card{
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.1);
+    margin-bottom:30px;
+}
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+.gallery img{
+    width:100%;
+    border-radius:15px;
+    height:220px;
+    object-fit:cover;
+}
+.news-box{
+    background:#fff;
+    border-left:6px solid #fb8500;
+    padding:20px;
+    border-radius:15px;
+}
+footer{
+    background:#d62828;
+    color:white;
+    text-align:center;
+    padding:30px;
+}
+
+/* chatbot */
+.chatbot{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    width:320px;
+    background:white;
+    border-radius:20px;
+    box-shadow:0 0 20px rgba(0,0,0,0.2);
+    overflow:hidden;
+}
+.chat-header{
+    background:#fb8500;
+    color:white;
+    padding:12px;
+    font-weight:bold;
+}
+.chat-body{
+    height:220px;
+    padding:10px;
+    overflow-y:auto;
+    font-size:14px;
+}
+.chat-input{
+    display:flex;
+    border-top:1px solid #ddd;
+}
+.chat-input input{
+    flex:1;
+    border:none;
+    padding:10px;
+}
+.chat-input button{
+    border:none;
+    background:#d62828;
+    color:white;
+    padding:10px 15px;
+    cursor:pointer;
+}
+
+/* spin section */
+.spin-btn{
+    padding:14px 28px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(45deg,#ffb703,#fb8500,#d62828);
+    color:white;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+}
+#spinResult{
+    margin-top:20px;
+    font-size:22px;
+    color:#d62828;
+    font-weight:bold;
+}
+.contact-container{
+    display:flex;
+    gap:30px;
+    align-items:stretch;
+    flex-wrap:wrap;
+}
+
+.contact-info{
+    flex:1;
+    min-width:300px;
+}
+
+.contact-map{
+    flex:1;
+    min-width:300px;
+}
+/* nút chatbot */
+#chatToggle{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background:linear-gradient(45deg,#ffb703,#fb8500,#d62828);
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:28px;
+    cursor:pointer;
+    box-shadow:0 4px 15px rgba(0,0,0,0.3);
+    z-index:2000;
+}
+
+/* khung chat */
+.chatbot{
+    position:fixed;
+    bottom:90px;
+    right:20px;
+    width:320px;
+    background:white;
+    border-radius:20px;
+    box-shadow:0 0 20px rgba(0,0,0,0.2);
+    overflow:hidden;
+    display:none;
+    z-index:2000;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <div class="logo"><a href="#home">🥮 Bánh Ép Huế</a></div>
+    <nav>
+        <a href="#home">Trang chủ</a>
+        <a href="#about">Giới thiệu</a>
+        <a href="#gallery">Hình ảnh</a>
+        <a href="#news">Tin tức</a>
+        <a href="#spin">Chọn quán</a>
+        <a href="#contact">Liên hệ</a>
+    </nav>
+</header>
+
+<section class="banner" id="home">
+    <div>
+        <h1>🥮 Bánh Ép Huế</h1>
+        <p>“Ép một chiếc bánh – Gói trọn hương vị cố đô”</p>
+    </div>
+</section>
+
+<section id="about">
+    <h2>🌟 Giới thiệu & nguồn gốc</h2>
+    <div class="card">
+        <p>
+            Bánh ép Huế là món ăn dân dã nổi tiếng của vùng đất cố đô. 
+            Bánh được ép giữa hai tấm gang nóng trên bếp than hồng, tạo nên lớp vỏ dẻo hoặc giòn tùy sở thích.
+        </p>
+        <p>
+            Khi ăn, bánh được cuốn cùng rau răm, dưa leo, đồ chua và chấm nước mắm cay đặc trưng.
+        </p>
+        <h3>🔥 Quy trình làm bánh</h3>
+            <p>Bước 1: Chuẩn bị bột lọc, thịt rim, trứng, hành lá, rau sống</p>
+            <p>Bước 2: Làm nóng khuôn gang trên bếp than</p>
+            <p>Bước 3: Ép lần 1 cho bột mỏng rồi</p>
+            <p>Bước 4: Thêm nhân thịt, trứng</p>
+            <p>Bước 5: Ép lần 2 cho giòn/dẻo</p>
+            <p>🚨Lật đều tay đến khi vàng thơm</p>
+
+        <h3>🎥 Video giới thiệu</h3>
+        <video width="100%" height="400"
+            src="video giới thiệu.mp4"
+            title="Video bánh ép Huế"
+            frameborder="0" allowfullscreen controls>
+        </video>
+    </div>
+</section>
+
+<section id="gallery">
+    <h2>📸 Hình ảnh bánh ép & menu quán</h2>
+    <div class="gallery">
+        <figure>
+            <img src="Bánh cặp.jpg" >
+            <figcaption>Bánh cặp là bánh ướt sau khi ép lần 1 họ sẽ cho bánh khô vào. Dựa vào dự kết dính của bánh dẻo tạo nên một kết câu bánh cặp ăn vừa giòn vừa dai rất bon miệng! </figcaption>
+        </figure>
+        <figure>
+            <img src="Mì ép.jpg">
+            <figcaption>Bánh mì được ép với thịt, trứng cút và rau răm. Khi ăn ta có thể cắt từng lát để dễ chấm với nước mắm. Nếu bạn muốn ăn no vào buổi sáng thì đây chính là lựa chọn tuyệt vời!</figcaption>
+        </figure>
+        <figure>
+            <img src="Khô trứng.jpg">
+            <figcaption>Bánh ép khô được ép với trứng giúp tăng thêm hương vị khi chấm cùng nước mắm đặc quyện với cái giòn của bánh.</figcaption>
+        </figure>
+        <figure>
+            <img src="Bánh khô.jpg">
+            <figcaption>Bánh ép khô được ép với thịt và gia vị đầy đủ, ăn không cần chấm💘giòn tan trong miệng!</figcaption>
+        </figure>
+    </div>
+    <figure style="text-align: center;">
+        <img src="Menu.jpg" width="750px" height="1000px">
+        <figcaption>Menu của quán bánh ép Chị Gái bao gồm: Bánh ép dẻo, bánh ép khô, mì ép, ốp la,...</figcaption>
+    </figure>
+</section>
+
+<section id="news">
+    <h2>📝 Tin tức & cảm nhận trải nghiệm</h2>
+    <div class="news-box">
+        <p>
+            “Nhóm chúng em đã trải nghiệm bánh ép tại nhiều quán ở Huế.
+            Điểm thú vị là mỗi quán có độ giòn, độ cay và nước chấm khác nhau.
+            Cảm giác ngồi bên bếp than hồng, chờ từng chiếc bánh nóng hổi thực sự rất đặc biệt.”
+        </p>
+    </div>
+    <div class="card">
+        <h3>✨ Chia sẻ trải nghiệm bánh ép của bạn</h3>
+
+        <form action="Camon.html" method="POST">
+            <label><b>🏠 Tên quán:</b></label><br>
+            <input type="text" id="shopName" required
+                style="width:100%;padding:10px;margin:10px 0;border-radius:10px;border:1px solid #ccc;"><br>
+
+            <label><b>⭐ Đánh giá:</b></label><br>
+            <select id="rating" required 
+                style="width:100%;padding:10px;margin:10px 0;border-radius:10px;">
+                <option value="⭐">1⭐</option>
+                <option value="⭐⭐">2⭐</option>
+                <option value="⭐⭐⭐">3⭐</option>
+                <option value="⭐⭐⭐⭐">4⭐</option>
+                <option value="⭐⭐⭐⭐⭐" selected>5⭐</option>
+            </select><br>
+
+            <label><b>💭 Cảm nhận cá nhân:</b></label><br>
+            <textarea id="reviewText" rows="5" required
+                style="width:100%;padding:10px;margin:10px 0;border-radius:10px;border:1px solid #ccc;"></textarea><br>
+
+            <button type="submit"
+                style="padding:12px 24px;border:none;border-radius:12px;
+                background:linear-gradient(45deg,#ffb703,#fb8500,#d62828);
+                color:white;font-weight:bold;cursor:pointer;">
+                📩 Gửi cảm nhận
+            </button>
+        </form>
+    </div>
+
+    <div id="reviewList" style="margin-top:30px;">
+        <div class="news-box">
+            <p><b>🥮 Bánh ép Cây Sứ</b> - ⭐⭐⭐⭐⭐</p>
+            <p>Vỏ bánh giòn, nước chấm rất đậm vị. Rau sống tươi và đồ chua rất hợp.</p>
+        </div>
+        <div class="news-box">
+            <p><b>🥮 Bánh ép Chị Gái</b> - ⭐⭐⭐⭐⭐</p>
+            <p>Nhiều món độc đáo. Đặc biệt tôi thích nhất là ốp la 10 trứng béo ngậy.</p>
+        </div>
+        <div class="news-box">
+            <p><b>🥮 Bánh ép O Kiều</b> - ⭐⭐⭐</p>
+            <p>Cô chủ dễ thương. Nhân viên hơi khó tin và thái độ.</p>
+        </div>
+        <div class="news-box">
+            <p><b>🥮 Bánh ép O Bình</b> - ⭐⭐⭐⭐⭐</p>
+            <p>Ngon nha! Nên trải nghiệm, chua ngọt ướp lạnh ăn tươi lắm! Mà mọi người phải đợi vì o chỉ ép một mình với hai khuôn bánh thôi!</p>
+        </div>
+    </div>
+</section>
+
+<section id="spin">
+   <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vòng Quay Bánh Ép Huế</title>
+<style>
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    text-align:center;
+    background: linear-gradient(to bottom, #fffdf8, #fff5e6);
+}
+
+h1{
+    color:#d62828;
+    margin-top:20px;
+    font-size:36px;
+}
+
+.subtitle{
+    color:#f77f00;
+    font-size:18px;
+    margin-bottom:20px;
+}
+
+.container{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:20px;
+}
+
+.wheel-box{
+    position:relative;
+    width:420px;
+    height:420px;
+}
+
+.pointer{
+    position:absolute;
+    top:-10px;
+    left:50%;
+    transform:translateX(-50%);
+    width:0;
+    height:0;
+    border-left:20px solid transparent;
+    border-right:20px solid transparent;
+    border-top:40px solid #d62828;
+    z-index:10;
+}
+
+canvas{
+    background:white;
+    border-radius:50%;
+    box-shadow:0 0 20px rgba(0,0,0,0.2);
+}
+
+button{
+    padding:14px 30px;
+    font-size:20px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(45deg,#ffb703,#fb8500,#d62828);
+    color:white;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+.result{
+    width:80%;
+    max-width:700px;
+    background:white;
+    border-radius:20px;
+    padding:20px;
+    box-shadow:0 0 15px rgba(0,0,0,0.1);
+    margin-bottom:30px;
+    min-height:120px;
+}
+
+iframe{
+    width:100%;
+    height:300px;
+    border:none;
+    border-radius:15px;
+}
+</style>
+</head>
+<body>
+
+<h1>🥮🎡 Vòng Quay Bánh Ép Huế 🍢✨</h1>
+<p class="subtitle">Quay là có quán ngon ngay tại Huế!</p>
+
+<div class="container">
+    <div class="wheel-box">
+        <div class="pointer"></div>
+        <canvas id="wheel" width="420" height="420"></canvas>
+    </div>
+
+    <button onclick="spinWheel()">🎯 Quay Ngay</button>
+
+    <div class="result" id="result">
+        <h2>✨ Kết quả sẽ xuất hiện tại đây</h2>
+    </div>
+</div>
+
+<script>
+const originalShops = [
+    {name:"Bánh Ép Gia Di", address:"4 Phùng Chí Kiên, Huế", map:"https://www.google.com/maps?q=4 Phùng Chí Kiên, Huế&output=embed"},
+    {name:"Bánh Ép Cây Sứ", address:"31 kiệt 103 Nhật Lệ, Huế", map:"https://www.google.com/maps?q=31 kiệt 103 Nhật Lệ, Huế&output=embed"},
+    {name:"Bánh Ép Huệ", address:"118 Lê Ngô Cát, Huế", map:"https://www.google.com/maps?q=118 Lê Ngô Cát, Huế&output=embed"},
+    {name:"Bánh Ép O Bình", address:"Xóm 10, Dương Nỗ, Huế", map:"https://www.google.com/maps?q=Xóm 10, Dương Nỗ, Huế&output=embed"},
+    {name:"Bánh Ép O Nị", address:"68 Điện Biên Phủ, Huế", map:"https://www.google.com/maps?q=68 Điện Biên Phủ, Huế&output=embed"},
+    {name:"Bánh Ép O Kiều", address:"4 Lê Sỹ, Hải Tiến, Thuận An, Huế", map:"https://www.google.com/maps?q=4 Lê Sỹ, Hải Tiến, Thuận An, Huế&output=embed"},
+    {name:"Bánh Ép Lò Củi", address:"27 Tôn Đức Thắng, Huế", map:"https://www.google.com/maps?q=27 Tôn Đức Thắng, Huế&output=embed"},
+    {name:"Quán bánh 1992", address:"7/18 Hoàng Quốc Việt, Huế", map:"https://www.google.com/maps?q=7/18 Hoàng Quốc Việt, Huế&output=embed"},
+    {name:"Bánh Ép Trang", address:"03 Lê Viết Lượng, Huế", map:"https://www.google.com/maps?q=03 Lê Viết Lượng, Huế&output=embed"},
+    {name:"Bánh Ép Chị Gái", address:"369 QL49B, An Dương, Thuận An, Huế", map:"https://www.google.com/maps?q=369 QL49B, An Dương, Thuận An, Huế&output=embed"}
+];
+
+let shops = [...originalShops];
+
+const canvas = document.getElementById("wheel");
+const ctx = canvas.getContext("2d");
+const size = shops.length;
+const arc = (2 * Math.PI) / size;
+
+let currentRotation = 0;
+let spinning = false;
+
+function drawWheel(){
+    ctx.clearRect(0,0,420,420);
+
+    for(let i=0;i<shops.length;i++){
+        const angle = i * arc + currentRotation;
+
+        ctx.beginPath();
+        ctx.moveTo(210,210);
+        ctx.arc(210,210,200,angle,angle+arc);
+        ctx.fillStyle = i%2===0 ? "#ffb703" : "#fb8500";
+        ctx.fill();
+
+        ctx.save();
+        ctx.translate(210,210);
+        ctx.rotate(angle + arc/2);
+        ctx.fillStyle="white";
+        ctx.font="bold 15px Arial";
+        ctx.textAlign="right";
+        ctx.fillText(shops[i].name,180,5);
+        ctx.restore();
+    }
+}
+
+function resetResult(){
+    document.getElementById("result").innerHTML = `
+        <h2>🎡 Đang quay tìm quán ngon cho bạn...</h2>
+    `;
+}
+
+function updateResult(shop){
+    document.getElementById("result").innerHTML = `
+        <h2>🎉 Hôm nay ăn: ${shop.name}</h2>
+        <p><b>📍 Địa chỉ:</b> ${shop.address}</p>
+        <iframe src="${shop.map}" loading="lazy"></iframe>
+    `;
+}
+
+function spinWheel(){
+    if(spinning) return;
+    spinning = true;
+
+    // reset dữ liệu hiển thị lượt cũ
+    resetResult();
+
+    // reset mảng gốc đảm bảo xác suất luôn đều 10%
+    shops = [...originalShops];
+
+    const selectedIndex = Math.floor(Math.random() * shops.length);
+
+    const stopAngle =
+        (Math.PI * 2 * 5) +
+        (Math.PI * 2 - selectedIndex * arc - arc/2);
+
+    const start = currentRotation;
+    const end = start + stopAngle;
+    const duration = 4000;
+    const startTime = performance.now();
+
+    function animate(time){
+        const progress = Math.min((time - startTime) / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 3);
+
+        currentRotation = start + (end - start) * ease;
+        drawWheel();
+
+        if(progress < 1){
+            requestAnimationFrame(animate);
+        }else{
+            spinning = false;
+            currentRotation = currentRotation % (2*Math.PI);
+
+            // kết quả đồng bộ tuyệt đối
+            updateResult(shops[selectedIndex]);
+        }
+    }
+
+    requestAnimationFrame(animate);
+}
+
+drawWheel();
+</script>
+
+</body>
+</section>
+
+<section id="contact">
+    <h2>📍 Liên hệ</h2>
+
+    <div class="contact-container">
+        <!-- Cột trái -->
+        <div class="contact-info card">
+            <p><b>🏠 Địa chỉ:</b> THPT Phan Đăng Lưu,Huế, Việt Nam</p>
+            <p><b>📧 Email:</b> sangthanhbiluoi12a1@gmail.com</p>
+            <p><b>📘 Facebook:</b> A1 23-26 PĐL Huế</p>
+            <p><b>📞 Hotline:</b> 0349 536 208</p>
+            <p>🥮 Huế là vùng đất cố đô nổi tiếng với vẻ đẹp trầm mặc, thơ mộng và nền ẩm thực tinh tế. Trong đó, bánh ép Huế là món ăn dân dã đặc sắc, được ép trên khuôn gang nóng, ăn kèm rau sống, đồ chua và nước mắm cay, mang hương vị giòn thơm khó quên.Hãy đến Huế để trải nghiệm hương vị bánh ép nóng hổi nhé!</p>
+        </div>
+
+        <!-- Cột phải -->
+        <div class="contact-map card">
+            <iframe
+                src="https://www.google.com/maps?q=GJ63+H4H, Quốc lộ 49B, Lưu Khánh, Dương Nỗ, Huế, Việt Nam&output=embed"
+                width="100%"
+                height="320"
+                style="border:0;border-radius:15px;"
+                allowfullscreen=""
+                loading="lazy">
+            </iframe>
+        </div>
+    </div>
+</section>
+
+<footer>
+    © 2026 Website trải nghiệm ẩm thực địa phương Bánh Ép Huế | Nhóm 2 Tổ 2 ❤️
+</footer>
+
+
+
+<script>
+
+function sendMessage(){
+    let input = document.getElementById("userInput").value.toLowerCase();
+    let chatBody = document.getElementById("chatBody");
+    let response = "🥮 Bạn nên thử bánh ép giòn chấm nước mắm cay nhé!";
+
+    if(input.includes("giòn")) response = "🔥 Bánh ép giòn là ép lâu hơn, ăn cực cuốn!";
+    if(input.includes("dẻo")) response = "🥮 Bánh ép dẻo mềm dai, giữ vị bột lọc rất ngon.";
+    if(input.includes("quán")) response = "📍 Bạn hãy thử Bánh ép Cây Sứ hoặc Bánh ép Huệ nhé!";
+    if(input.includes("thuận an")) response = "🌊 Gần biển Thuận An có quán Chị Gái rất nổi tiếng.";
+
+    chatBody.innerHTML += `<p><b>Bạn:</b> ${input}</p>`;
+    chatBody.innerHTML += `<p><b>Bot:</b> ${response}</p>`;
+    document.getElementById("userInput").value = "";
+    chatBody.scrollTop = chatBody.scrollHeight;
+}
+function toggleChat(){
+    const chatBox = document.getElementById("chatbotBox");
+
+    if(chatBox.style.display === "none" || chatBox.style.display === ""){
+        chatBox.style.display = "block"; // mở
+    } else {
+        chatBox.style.display = "none"; // đóng
+    }
+}
+</script>
+<!-- nút bật tắt chatbot -->
+<div id="chatToggle" onclick="toggleChat()">💬</div>
+
+<!-- hộp chatbot -->
+<div id="chatbotBox" class="chatbot">
+    <div class="chat-header">
+        🤖 Chatbot Bánh Ép Huế
+        <span onclick="toggleChat()" style="float:right;cursor:pointer;">✖</span>
+    </div>
+
+    <div class="chat-body" id="chatBody">
+        <p><b>Bot:</b> Xin chào 👋 Bạn muốn ăn bánh ép giòn hay dẻo hôm nay?</p>
+    </div>
+
+    <div class="chat-input">
+        <input type="text" id="userInput" placeholder="Nhập câu hỏi...">
+        <button onclick="sendMessage()">Gửi</button>
+    </div>
+</div>
+</body>
+</html>
