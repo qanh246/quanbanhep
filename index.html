@@ -276,57 +276,295 @@ footer{
             Cảm giác ngồi bên bếp than hồng, chờ từng chiếc bánh nóng hổi thực sự rất đặc biệt.”
         </p>
     </div>
-    <div class="card">
-        <h3>✨ Chia sẻ trải nghiệm bánh ép của bạn</h3>
-
-        <form action="Camon.html" method="GET">
-            <label><b>🏠 Tên quán:</b></label><br>
-            <input type="text" id="shopName" required
-                style="width:100%;padding:10px;margin:10px 0;border-radius:10px;border:1px solid #ccc;"><br>
-
-            <label><b>⭐ Đánh giá:</b></label><br>
-            <select id="rating" required 
-                style="width:100%;padding:10px;margin:10px 0;border-radius:10px;">
-                <option value="⭐">1⭐</option>
-                <option value="⭐⭐">2⭐</option>
-                <option value="⭐⭐⭐">3⭐</option>
-                <option value="⭐⭐⭐⭐">4⭐</option>
-                <option value="⭐⭐⭐⭐⭐" selected>5⭐</option>
-            </select><br>
-
-            <label><b>💭 Cảm nhận cá nhân:</b></label><br>
-            <textarea id="reviewText" rows="5" required
-                style="width:100%;padding:10px;margin:10px 0;border-radius:10px;border:1px solid #ccc;"></textarea><br>
-
-            <button type="submit"
-                style="padding:12px 24px;border:none;border-radius:12px;
-                background:linear-gradient(45deg,#ffb703,#fb8500,#d62828);
-                color:white;font-weight:bold;cursor:pointer;">
-                📩 Gửi cảm nhận
-            </button>
-        </form>
-    </div>
-
-    <div id="reviewList" style="margin-top:30px;">
-        <div class="news-box">
-            <p><b>🥮 Bánh ép Cây Sứ</b> - ⭐⭐⭐⭐⭐</p>
-            <p>Vỏ bánh giòn, nước chấm rất đậm vị. Rau sống tươi và đồ chua rất hợp.</p>
-        </div>
-        <div class="news-box">
-            <p><b>🥮 Bánh ép Chị Gái</b> - ⭐⭐⭐⭐⭐</p>
-            <p>Nhiều món độc đáo. Đặc biệt tôi thích nhất là ốp la 10 trứng béo ngậy.</p>
-        </div>
-        <div class="news-box">
-            <p><b>🥮 Bánh ép O Kiều</b> - ⭐⭐⭐</p>
-            <p>Cô chủ dễ thương. Nhân viên hơi khó tin và thái độ.</p>
-        </div>
-        <div class="news-box">
-            <p><b>🥮 Bánh ép O Bình</b> - ⭐⭐⭐⭐⭐</p>
-            <p>Ngon nha! Nên trải nghiệm, chua ngọt ướp lạnh ăn tươi lắm! Mà mọi người phải đợi vì o chỉ ép một mình với hai khuôn bánh thôi!</p>
-        </div>
-    </div>
 </section>
+    <!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ Thống Đánh Giá Bánh Ép Huế</title>
+    <style>
+        /* CSS PHONG CÁCH GIAO DIỆN MỚI */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fcf1da; /* Màu nền vàng nhạt */
+            color: #444;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
 
+        .main-wrapper {
+            max-width: 800px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Khung tiêu đề cảm nhận (phần trên cùng trong ảnh) */
+        .intro-box {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 8px solid #ff9f43; /* Viền cam bên trái */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .intro-box h1 {
+            color: #d32f2f; /* Màu đỏ */
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            margin-top: 0;
+        }
+
+        .intro-box p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Khung chứa form đánh giá */
+        .form-section {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .form-title {
+            color: #d32f2f;
+            text-align: center;
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+            text-align: center; /* Căn giữa label như trong ảnh */
+        }
+
+        /* Phong cách cho các input/textarea */
+        input[type="text"], select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box; /* Giúp padding không làm tăng kích thước */
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus, select:focus, textarea:focus {
+            border-color: #ff9f43;
+            outline: none;
+        }
+
+        textarea {
+            resize: vertical; /* Cho phép kéo thả chiều cao */
+        }
+
+        /* Nút gửi cảm nhận màu cam gradient */
+        #submit-btn {
+            display: block;
+            width: auto;
+            margin: 30px auto 10px auto;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #ff9f43, #ff6b6b);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+
+        #submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+
+        /* Khung danh sách đánh giá bên dưới */
+        .review-section {
+            margin-top: 30px;
+        }
+
+        .review-item {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        /* Chấm cam tiêu đề bài review */
+        .review-item h3 {
+            color: #007bff;
+            font-size: 1.1rem;
+            margin: 0 0 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .review-item h3::before {
+            content: '●';
+            color: #ff9f43;
+            font-size: 1.2rem;
+        }
+
+        .review-text {
+            line-height: 1.6;
+            margin: 0;
+            color: #555;
+        }
+
+        /* Màu cho số sao */
+        .stars {
+            color: #f1c40f; /* Vàng */
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="main-wrapper">
+    <div class="intro-box">
+        <h1>📝 Tin tức & cảm nhận trải nghiệm</h1>
+        <p>“Nhóm chúng em đã trải nghiệm bánh ép tại nhiều quán ở Huế. Điểm thú vị là mỗi quán có độ giòn, độ cay và nước chấm khác nhau. Cảm giác ngồi bên bếp than hồng, chờ từng chiếc bánh nóng hổi thực sự rất đặc biệt.”</p>
+    </div>
+
+    <div class="form-section">
+        <p class="form-title">✨ Chia sẻ trải nghiệm bánh ép của bạn</p>
+        
+        <div class="form-group">
+            <label for="shop-name">🏠 Tên quán:</label>
+            <input type="text" id="shop-name" placeholder="Nhập tên quán bánh ép...">
+        </div>
+
+        <div class="form-group">
+            <label for="rating">⭐ Đánh giá:</label>
+            <select id="rating">
+                <option value="5">5 sao ⭐⭐⭐⭐⭐ (Tuyệt vời)</option>
+                <option value="4">4 sao ⭐⭐⭐⭐ (Khá)</option>
+                <option value="3">3 sao ⭐⭐⭐ (Trung bình)</option>
+                <option value="2">2 sao ⭐⭐ (Kém)</option>
+                <option value="1">1 sao ⭐ (Rất tệ)</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="review-content">💭 Cảm nhận cả nhân:</label>
+            <textarea id="review-content" rows="6" placeholder="Viết cảm nhận của bạn tại đây..."></textarea>
+        </div>
+
+        <button id="submit-btn">📥 Gửi cảm nhận</button>
+    </div>
+
+    <div id="review-list" class="review-section">
+        </div>
+</div>
+
+<script>
+ // Cấu hình số lượng bình luận hiển thị mặc định
+const LIMIT = 3; 
+const dbKey = 'banhEpHueReviews';
+let isShowAll = false; // Trạng thái: đang rút gọn hay hiện hết
+
+window.onload = function() {
+    refreshUI();
+};
+
+function refreshUI() {
+    const reviewList = document.getElementById('review-list');
+    const saved = JSON.parse(localStorage.getItem(dbKey)) || [];
+    
+    // Xóa danh sách cũ để vẽ lại
+    reviewList.innerHTML = '';
+
+    // Quyết định danh sách sẽ hiển thị
+    // Đảo ngược để cái mới nhất lên đầu
+    const displayData = [...saved].reverse(); 
+    
+    // Xác định xem có cần hiện nút "Xem thêm" không
+    const needsTruncation = displayData.length > LIMIT;
+    const currentItems = isShowAll ? displayData : displayData.slice(0, LIMIT);
+
+    // Vẽ các bình luận
+    currentItems.forEach((r, index) => {
+        const starStr = '★'.repeat(r.rating) + ' '.repeat(5 - r.rating);
+        const div = document.createElement('div');
+        div.classList.add('review-item');
+        
+        // Bài đầu tiên có viền cam đậm chất riêng
+        if (index === 0) div.style.borderLeft = '8px solid #ff9f43';
+
+        div.innerHTML = `
+            <h3>${r.shopName} - <span class="stars">${starStr}</span></h3>
+            <p class="review-text">${r.content}</p>
+        `;
+        reviewList.appendChild(div);
+    });
+
+    // Xử lý nút "Xem thêm"
+    if (needsTruncation) {
+        const btn = document.createElement('button');
+        btn.id = 'load-more-btn';
+        btn.innerText = isShowAll ? "Ẩn bớt bình luận" : "Hiện thêm bình luận (" + (displayData.length - LIMIT) + ")";
+        
+        // CSS nhanh cho nút xem thêm
+        btn.style.cssText = "display:block; margin: 10px auto; background:none; border:1px solid #ff9f43; color:#ff9f43; padding:8px 20px; border-radius:20px; cursor:pointer; font-weight:bold;";
+        
+        btn.onclick = function() {
+            isShowAll = !isShowAll;
+            refreshUI();
+        };
+        reviewList.appendChild(btn);
+    }
+}
+
+// Sự kiện khi nhấn nút Gửi (Cập nhật lại để tự làm mới giao diện)
+document.getElementById('submit-btn').onclick = function() {
+    const shopName = document.getElementById('shop-name').value;
+    const rating = parseInt(document.getElementById('rating').value);
+    const content = document.getElementById('review-content').value;
+
+    if (!shopName || !content) {
+        alert("⚠️ Vui lòng điền đủ thông tin!");
+        return;
+    }
+
+    const saved = JSON.parse(localStorage.getItem(dbKey)) || [];
+    saved.push({ shopName, rating, content });
+    localStorage.setItem(dbKey, JSON.stringify(saved));
+
+    // Reset form
+    document.getElementById('shop-name').value = '';
+    document.getElementById('review-content').value = '';
+    
+    // Cập nhật lại giao diện
+    refreshUI();
+    alert("✅ Đã gửi đánh giá thành công!");
+};
+</script>
+
+</body>
+</html>
 <section id="spin">
    <head>
 <meta charset="UTF-8">
