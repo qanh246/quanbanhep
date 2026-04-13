@@ -5,191 +5,279 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bánh Ép Huế - Hương vị dân dã cố đô</title>
 <style>
-*{box-sizing:border-box; scroll-behavior:smooth;}
-body{
-    margin:0;
-    font-family:Arial, sans-serif;
-    background:#fffaf5;
-    color:#333;
-}
-header{
-    background:linear-gradient(90deg,#ffb703,#fb8500,#d62828);
-    color:white;
-    padding:15px 40px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    position:sticky;
-    top:0;
-    z-index:1000;
-}
-.logo{
-    font-size:28px;
-    font-weight:bold;
-}
-nav a{
-    color:white;
-    text-decoration:none;
-    margin:0 12px;
-    font-weight:bold;
-}
-nav a:hover{ text-decoration:underline; }
-
-.banner{
-    height:500px;
-    background:url("ảnh giới thiệu.jpg") center/cover;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    color:white;
-    text-shadow:2px 2px 8px black;
-    text-align:center;
-}
-.banner h1{
-    font-size:50px;
-}
-section{
-    padding:60px 10%;
-}
-h2{
-    color:#d62828;
-    margin-bottom:20px;
-}
-.card{
-    background:white;
-    padding:25px;
-    border-radius:20px;
-    box-shadow:0 4px 15px rgba(0,0,0,0.1);
-    margin-bottom:30px;
-}
-.gallery{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
-}
-.gallery img{
-    width:100%;
-    border-radius:15px;
-    height:220px;
-    object-fit:cover;
-}
-.news-box{
-    background:#fff;
-    border-left:6px solid #fb8500;
-    padding:20px;
-    border-radius:15px;
-}
-footer{
-    background:#d62828;
-    color:white;
-    text-align:center;
-    padding:30px;
+/* ================= TỔNG QUAN ================= */
+*{ box-sizing: border-box; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #fffaf5;
+    color: #333;
+    overflow-x: hidden; /* Chống tràn viền ngang */
 }
 
-/* chatbot */
-.chatbot{
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    width:320px;
-    background:white;
-    border-radius:20px;
-    box-shadow:0 0 20px rgba(0,0,0,0.2);
-    overflow:hidden;
+/* ================= HEADER & NAV ================= */
+header {
+    background: linear-gradient(90deg, #ffb703, #fb8500, #d62828);
+    color: white;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
-.chat-header{
-    background:#fb8500;
-    color:white;
-    padding:12px;
-    font-weight:bold;
+.logo { font-size: 28px; font-weight: bold; }
+.logo a { color: white; text-decoration: none; }
+nav a { color: white; text-decoration: none; margin: 0 12px; font-weight: bold; }
+nav a:hover { text-decoration: underline; }
+
+/* ================= BANNER & SECTION ================= */
+.banner {
+    height: 500px;
+    background: url("ảnh giới thiệu.jpg") center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-shadow: 2px 2px 8px black;
+    text-align: center;
 }
-.chat-body{
-    height:220px;
-    padding:10px;
-    overflow-y:auto;
-    font-size:14px;
+.banner h1 { font-size: 50px; }
+section { padding: 60px 10%; }
+h2 { color: #d62828; margin-bottom: 20px; }
+
+/* ================= CARDS & GALLERY ================= */
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
 }
-.chat-input{
-    display:flex;
-    border-top:1px solid #ddd;
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
 }
-.chat-input input{
-    flex:1;
-    border:none;
-    padding:10px;
+.gallery img {
+    width: 100%;
+    border-radius: 15px;
+    height: 220px;
+    object-fit: cover;
 }
-.chat-input button{
-    border:none;
-    background:#d62828;
-    color:white;
-    padding:10px 15px;
-    cursor:pointer;
+figure { margin: 0; }
+figcaption { margin-top: 10px; font-size: 15px; color: #555; }
+img { max-width: 100%; height: auto; } /* Ảnh không bao giờ bị tràn */
+
+/* ================= REVIEW SECTION ================= */
+.review-wrapper {
+    background-color: #fcf1da;
+    border-radius: 20px;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+.main-wrapper {
+    max-width: 800px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.intro-box {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 8px solid #ff9f43;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+.intro-box h1 { color: #d32f2f; font-size: 1.5rem; margin-bottom: 10px; margin-top: 0; }
+.intro-box p { font-size: 0.95rem; line-height: 1.6; margin: 0; }
+.form-section {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.form-title {
+    color: #d32f2f;
+    text-align: center;
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+.form-group { margin-bottom: 20px; }
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+    text-align: center;
+}
+input[type="text"], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+input[type="text"]:focus, select:focus, textarea:focus { border-color: #ff9f43; outline: none; }
+textarea { resize: vertical; }
+#submit-btn {
+    display: block;
+    width: auto;
+    margin: 30px auto 10px auto;
+    padding: 12px 30px;
+    background: linear-gradient(135deg, #ff9f43, #ff6b6b);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    transition: all 0.3s;
+}
+#submit-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.2); }
+.review-item {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.review-item h3 {
+    color: #007bff;
+    font-size: 1.1rem;
+    margin: 0 0 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.review-item h3::before { content: '●'; color: #ff9f43; font-size: 1.2rem; }
+.review-text { line-height: 1.6; margin: 0; color: #555; }
+.stars { color: #f1c40f; margin-left: 10px; }
+
+/* ================= SPIN WHEEL SECTION ================= */
+#spin {
+    text-align: center;
+    background: linear-gradient(to bottom, #fffdf8, #fff5e6);
+}
+#spin h1 { color: #d62828; margin-top: 20px; font-size: 36px; }
+.subtitle { color: #f77f00; font-size: 18px; margin-bottom: 20px; }
+.spin-container { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+.wheel-box {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    aspect-ratio: 1 / 1;
+    margin: 0 auto;
+}
+.pointer {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 40px solid #d62828;
+    z-index: 10;
+}
+canvas {
+    width: 100%;
+    height: 100%;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+.spin-btn {
+    padding: 14px 30px;
+    font-size: 20px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(45deg, #ffb703, #fb8500, #d62828);
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.2s;
+}
+.spin-btn:hover { transform: scale(1.05); }
+.result {
+    width: 100%;
+    max-width: 700px;
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+    min-height: 120px;
 }
 
-/* spin section */
-.spin-btn{
-    padding:14px 28px;
-    border:none;
-    border-radius:12px;
-    background:linear-gradient(45deg,#ffb703,#fb8500,#d62828);
-    color:white;
-    font-size:18px;
-    font-weight:bold;
-    cursor:pointer;
+/* ================= CONTACT SECTION ================= */
+.contact-container {
+    display: flex;
+    gap: 30px;
+    align-items: stretch;
+    flex-wrap: wrap;
 }
-#spinResult{
-    margin-top:20px;
-    font-size:22px;
-    color:#d62828;
-    font-weight:bold;
-}
-.contact-container{
-    display:flex;
-    gap:30px;
-    align-items:stretch;
-    flex-wrap:wrap;
-}
+.contact-info, .contact-map { flex: 1; min-width: 300px; }
+iframe { width: 100%; border: none; border-radius: 15px; }
 
-.contact-info{
-    flex:1;
-    min-width:300px;
-}
+/* ================= FOOTER ================= */
+footer { background: #d62828; color: white; text-align: center; padding: 30px; }
 
-.contact-map{
-    flex:1;
-    min-width:300px;
+/* ================= CHATBOT ================= */
+#chatToggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #ffb703, #fb8500, #d62828);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    z-index: 2000;
 }
-/* nút chatbot */
-#chatToggle{
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    width:60px;
-    height:60px;
-    border-radius:50%;
-    background:linear-gradient(45deg,#ffb703,#fb8500,#d62828);
-    color:white;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:28px;
-    cursor:pointer;
-    box-shadow:0 4px 15px rgba(0,0,0,0.3);
-    z-index:2000;
+.chatbot {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 320px;
+    max-width: 90vw;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    overflow: hidden;
+    display: none;
+    z-index: 2000;
 }
+.chat-header { background: #fb8500; color: white; padding: 12px; font-weight: bold; }
+.chat-body { height: 220px; padding: 10px; overflow-y: auto; font-size: 14px; }
+.chat-input { display: flex; border-top: 1px solid #ddd; }
+.chat-input input { flex: 1; border: none; padding: 10px; outline: none; }
+.chat-input button { border: none; background: #d62828; color: white; padding: 10px 15px; cursor: pointer; }
 
-/* khung chat */
-.chatbot{
-    position:fixed;
-    bottom:90px;
-    right:20px;
-    width:320px;
-    background:white;
-    border-radius:20px;
-    box-shadow:0 0 20px rgba(0,0,0,0.2);
-    overflow:hidden;
-    display:none;
-    z-index:2000;
+/* ================= RESPONSIVE (MOBILE) ================= */
+@media (max-width: 768px) {
+    header { flex-direction: column; gap: 10px; padding: 15px 20px; text-align: center; }
+    nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+    nav a { margin: 0 5px; }
+    .banner h1 { font-size: 36px; }
+    section { padding: 40px 5%; }
 }
 </style>
 </head>
@@ -217,27 +305,18 @@ footer{
 <section id="about">
     <h2>🌟 Giới thiệu & nguồn gốc</h2>
     <div class="card">
-        <p>
-            Bánh ép Huế là món ăn dân dã nổi tiếng của vùng đất cố đô. 
-            Bánh được ép giữa hai tấm gang nóng trên bếp than hồng, tạo nên lớp vỏ dẻo hoặc giòn tùy sở thích.
-        </p>
-        <p>
-            Khi ăn, bánh được cuốn cùng rau răm, dưa leo, đồ chua và chấm nước mắm cay đặc trưng.
-        </p>
+        <p>Bánh ép Huế là món ăn dân dã nổi tiếng của vùng đất cố đô. Bánh được ép giữa hai tấm gang nóng trên bếp than hồng, tạo nên lớp vỏ dẻo hoặc giòn tùy sở thích.</p>
+        <p>Khi ăn, bánh được cuốn cùng rau răm, dưa leo, đồ chua và chấm nước mắm cay đặc trưng.</p>
         <h3>🔥 Quy trình làm bánh</h3>
-            <p>Bước 1: Chuẩn bị bột lọc, thịt rim, trứng, hành lá, rau sống</p>
-            <p>Bước 2: Làm nóng khuôn gang trên bếp than</p>
-            <p>Bước 3: Ép lần 1 cho bột mỏng rồi</p>
-            <p>Bước 4: Thêm nhân thịt, trứng</p>
-            <p>Bước 5: Ép lần 2 cho giòn/dẻo</p>
-            <p>🚨Lật đều tay đến khi vàng thơm</p>
+        <p>Bước 1: Chuẩn bị bột lọc, thịt rim, trứng, hành lá, rau sống</p>
+        <p>Bước 2: Làm nóng khuôn gang trên bếp than</p>
+        <p>Bước 3: Ép lần 1 cho bột mỏng rồi</p>
+        <p>Bước 4: Thêm nhân thịt, trứng</p>
+        <p>Bước 5: Ép lần 2 cho giòn/dẻo</p>
+        <p>🚨 Lật đều tay đến khi vàng thơm</p>
 
         <h3>🎥 Video giới thiệu</h3>
-        <video width="100%" height="400"
-            src="video giới thiệu.mp4"
-            title="Video bánh ép Huế"
-            frameborder="0" allowfullscreen controls>
-        </video>
+        <video width="100%" style="max-height: 400px; border-radius: 10px;" src="video giới thiệu.mp4" title="Video bánh ép Huế" frameborder="0" allowfullscreen controls></video>
     </div>
 </section>
 
@@ -245,198 +324,173 @@ footer{
     <h2>📸 Hình ảnh bánh ép & menu quán</h2>
     <div class="gallery">
         <figure>
-            <img src="Bánh cặp.jpg" >
-            <figcaption>Bánh cặp là bánh ướt sau khi ép lần 1 họ sẽ cho bánh khô vào. Dựa vào dự kết dính của bánh dẻo tạo nên một kết câu bánh cặp ăn vừa giòn vừa dai rất bon miệng! </figcaption>
+            <img src="Bánh cặp.jpg" alt="Bánh cặp">
+            <figcaption>Bánh cặp là bánh ướt sau khi ép lần 1 họ sẽ cho bánh khô vào. Dựa vào dự kết dính của bánh dẻo tạo nên một kết câu bánh cặp ăn vừa giòn vừa dai rất bon miệng!</figcaption>
         </figure>
         <figure>
-            <img src="Mì ép.jpg">
+            <img src="Mì ép.jpg" alt="Mì ép">
             <figcaption>Bánh mì được ép với thịt, trứng cút và rau răm. Khi ăn ta có thể cắt từng lát để dễ chấm với nước mắm. Nếu bạn muốn ăn no vào buổi sáng thì đây chính là lựa chọn tuyệt vời!</figcaption>
         </figure>
         <figure>
-            <img src="Khô trứng.jpg">
+            <img src="Khô trứng.jpg" alt="Khô trứng">
             <figcaption>Bánh ép khô được ép với trứng giúp tăng thêm hương vị khi chấm cùng nước mắm đặc quyện với cái giòn của bánh.</figcaption>
         </figure>
         <figure>
-            <img src="Bánh khô.jpg">
+            <img src="Bánh khô.jpg" alt="Bánh khô">
             <figcaption>Bánh ép khô được ép với thịt và gia vị đầy đủ, ăn không cần chấm💘giòn tan trong miệng!</figcaption>
         </figure>
     </div>
-    <figure style="text-align: center;">
-        <img src="Menu.jpg" width="750px" height="1000px">
+    <figure style="text-align: center; margin-top: 40px;">
+        <img src="Menu.jpg" alt="Menu" style="max-width: 750px; width: 100%; border-radius: 15px;">
         <figcaption>Menu của quán bánh ép Chị Gái bao gồm: Bánh ép dẻo, bánh ép khô, mì ép, ốp la,...</figcaption>
     </figure>
 </section>
 
 <section id="news">
     <h2>📝 Tin tức & cảm nhận trải nghiệm</h2>
-    <div class="news-box">
-        <p>
-            “Nhóm chúng em đã trải nghiệm bánh ép tại nhiều quán ở Huế.
-            Điểm thú vị là mỗi quán có độ giòn, độ cay và nước chấm khác nhau.
-            Cảm giác ngồi bên bếp than hồng, chờ từng chiếc bánh nóng hổi thực sự rất đặc biệt.”
-        </p>
-    </div>
-    <div class="card">
-        <h3>✨ Chia sẻ trải nghiệm bánh ép của bạn</h3>
+    <div class="review-wrapper">
+        <div class="main-wrapper">
+            <div class="intro-box">
+                <h1>📝 Cảm nhận trải nghiệm</h1>
+                <p>“Nhóm chúng em đã trải nghiệm bánh ép tại nhiều quán ở Huế. Điểm thú vị là mỗi quán có độ giòn, độ cay và nước chấm khác nhau. Cảm giác ngồi bên bếp than hồng, chờ từng chiếc bánh nóng hổi thực sự rất đặc biệt.”</p>
+            </div>
 
-        <form action="Camon.html" method="POST">
-            <label><b>🏠 Tên quán:</b></label><br>
-            <input type="text" id="shopName" required
-                style="width:100%;padding:10px;margin:10px 0;border-radius:10px;border:1px solid #ccc;"><br>
+            <div class="form-section">
+                <p class="form-title">✨ Chia sẻ trải nghiệm bánh ép của bạn</p>
+                <div class="form-group">
+                    <label for="shop-name">🏠 Tên quán:</label>
+                    <input type="text" id="shop-name" placeholder="Nhập tên quán bánh ép...">
+                </div>
+                <div class="form-group">
+                    <label for="rating">⭐ Đánh giá:</label>
+                    <select id="rating">
+                        <option value="5">5 sao ⭐⭐⭐⭐⭐ (Tuyệt vời)</option>
+                        <option value="4">4 sao ⭐⭐⭐⭐ (Khá)</option>
+                        <option value="3">3 sao ⭐⭐⭐ (Trung bình)</option>
+                        <option value="2">2 sao ⭐⭐ (Kém)</option>
+                        <option value="1">1 sao ⭐ (Rất tệ)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="review-content">💭 Cảm nhận cá nhân:</label>
+                    <textarea id="review-content" rows="6" placeholder="Viết cảm nhận của bạn tại đây..."></textarea>
+                </div>
+                <button id="submit-btn">📥 Gửi cảm nhận</button>
+            </div>
 
-            <label><b>⭐ Đánh giá:</b></label><br>
-            <select id="rating" required 
-                style="width:100%;padding:10px;margin:10px 0;border-radius:10px;">
-                <option value="⭐">1⭐</option>
-                <option value="⭐⭐">2⭐</option>
-                <option value="⭐⭐⭐">3⭐</option>
-                <option value="⭐⭐⭐⭐">4⭐</option>
-                <option value="⭐⭐⭐⭐⭐" selected>5⭐</option>
-            </select><br>
-
-            <label><b>💭 Cảm nhận cá nhân:</b></label><br>
-            <textarea id="reviewText" rows="5" required
-                style="width:100%;padding:10px;margin:10px 0;border-radius:10px;border:1px solid #ccc;"></textarea><br>
-
-            <button type="submit"
-                style="padding:12px 24px;border:none;border-radius:12px;
-                background:linear-gradient(45deg,#ffb703,#fb8500,#d62828);
-                color:white;font-weight:bold;cursor:pointer;">
-                📩 Gửi cảm nhận
-            </button>
-        </form>
-    </div>
-
-    <div id="reviewList" style="margin-top:30px;">
-        <div class="news-box">
-            <p><b>🥮 Bánh ép Cây Sứ</b> - ⭐⭐⭐⭐⭐</p>
-            <p>Vỏ bánh giòn, nước chấm rất đậm vị. Rau sống tươi và đồ chua rất hợp.</p>
-        </div>
-        <div class="news-box">
-            <p><b>🥮 Bánh ép Chị Gái</b> - ⭐⭐⭐⭐⭐</p>
-            <p>Nhiều món độc đáo. Đặc biệt tôi thích nhất là ốp la 10 trứng béo ngậy.</p>
-        </div>
-        <div class="news-box">
-            <p><b>🥮 Bánh ép O Kiều</b> - ⭐⭐⭐</p>
-            <p>Cô chủ dễ thương. Nhân viên hơi khó tin và thái độ.</p>
-        </div>
-        <div class="news-box">
-            <p><b>🥮 Bánh ép O Bình</b> - ⭐⭐⭐⭐⭐</p>
-            <p>Ngon nha! Nên trải nghiệm, chua ngọt ướp lạnh ăn tươi lắm! Mà mọi người phải đợi vì o chỉ ép một mình với hai khuôn bánh thôi!</p>
+            <div id="review-list" class="review-section"></div>
         </div>
     </div>
 </section>
 
 <section id="spin">
-   <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vòng Quay Bánh Ép Huế</title>
-<style>
-body{
-    margin:0;
-    font-family: Arial, sans-serif;
-    text-align:center;
-    background: linear-gradient(to bottom, #fffdf8, #fff5e6);
-}
-
-h1{
-    color:#d62828;
-    margin-top:20px;
-    font-size:36px;
-}
-
-.subtitle{
-    color:#f77f00;
-    font-size:18px;
-    margin-bottom:20px;
-}
-
-.container{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:20px;
-}
-
-.wheel-box{
-    position:relative;
-    width:420px;
-    height:420px;
-}
-
-.pointer{
-    position:absolute;
-    top:-10px;
-    left:50%;
-    transform:translateX(-50%);
-    width:0;
-    height:0;
-    border-left:20px solid transparent;
-    border-right:20px solid transparent;
-    border-top:40px solid #d62828;
-    z-index:10;
-}
-
-canvas{
-    background:white;
-    border-radius:50%;
-    box-shadow:0 0 20px rgba(0,0,0,0.2);
-}
-
-button{
-    padding:14px 30px;
-    font-size:20px;
-    border:none;
-    border-radius:12px;
-    background:linear-gradient(45deg,#ffb703,#fb8500,#d62828);
-    color:white;
-    cursor:pointer;
-    font-weight:bold;
-}
-
-button:hover{
-    transform:scale(1.05);
-}
-
-.result{
-    width:80%;
-    max-width:700px;
-    background:white;
-    border-radius:20px;
-    padding:20px;
-    box-shadow:0 0 15px rgba(0,0,0,0.1);
-    margin-bottom:30px;
-    min-height:120px;
-}
-
-iframe{
-    width:100%;
-    height:300px;
-    border:none;
-    border-radius:15px;
-}
-</style>
-</head>
-<body>
-
-<h1>🥮🎡 Vòng Quay Bánh Ép Huế 🍢✨</h1>
-<p class="subtitle">Quay là có quán ngon ngay tại Huế!</p>
-
-<div class="container">
-    <div class="wheel-box">
-        <div class="pointer"></div>
-        <canvas id="wheel" width="420" height="420"></canvas>
+    <h1>🥮🎡 Vòng Quay Bánh Ép Huế 🍢✨</h1>
+    <p class="subtitle">Quay là có quán ngon ngay tại Huế!</p>
+    <div class="spin-container">
+        <div class="wheel-box">
+            <div class="pointer"></div>
+            <canvas id="wheel" width="420" height="420"></canvas>
+        </div>
+        <button class="spin-btn" onclick="spinWheel()">🎯 Quay Ngay</button>
+        <div class="result" id="result">
+            <h2>✨ Kết quả sẽ xuất hiện tại đây</h2>
+        </div>
     </div>
+</section>
 
-    <button onclick="spinWheel()">🎯 Quay Ngay</button>
+<section id="contact">
+    <h2>📍 Liên hệ</h2>
+    <div class="contact-container">
+        <div class="contact-info card">
+            <p><b>🏠 Địa chỉ:</b> THPT Phan Đăng Lưu, Huế, Việt Nam</p>
+            <p><b>📧 Email:</b> sangthanhbiluoi12a1@gmail.com</p>
+            <p><b>📘 Facebook:</b> A1 23-26 PĐL Huế</p>
+            <p><b>📞 Hotline:</b> 0349 536 208</p>
+            <p>🥮 Huế là vùng đất cố đô nổi tiếng với vẻ đẹp trầm mặc, thơ mộng và nền ẩm thực tinh tế. Trong đó, bánh ép Huế là món ăn dân dã đặc sắc, được ép trên khuôn gang nóng, ăn kèm rau sống, đồ chua và nước mắm cay, mang hương vị giòn thơm khó quên. Hãy đến Huế để trải nghiệm hương vị bánh ép nóng hổi nhé!</p>
+        </div>
+        <div class="contact-map card">
+            <iframe src="https://www.google.com/maps?q=GJ63+H4H,%20Quốc%20lộ%2049B,%20Lưu%20Khánh,%20Dương%20Nỗ,%20Huế,%20Việt%20Nam&output=embed" height="320" loading="lazy"></iframe>
+        </div>
+    </div>
+</section>
 
-    <div class="result" id="result">
-        <h2>✨ Kết quả sẽ xuất hiện tại đây</h2>
+<footer>
+    © 2026 Website trải nghiệm ẩm thực địa phương Bánh Ép Huế | Nhóm 2 Tổ 2 ❤️
+</footer>
+
+<div id="chatToggle" onclick="toggleChat()">💬</div>
+
+<div id="chatbotBox" class="chatbot">
+    <div class="chat-header">
+        🤖 Chatbot Bánh Ép Huế
+        <span onclick="toggleChat()" style="float:right;cursor:pointer;">✖</span>
+    </div>
+    <div class="chat-body" id="chatBody">
+        <p><b>Bot:</b> Xin chào 👋 Bạn muốn ăn bánh ép giòn hay dẻo hôm nay?</p>
+    </div>
+    <div class="chat-input">
+        <input type="text" id="userInput" placeholder="Nhập câu hỏi...">
+        <button onclick="sendMessage()">Gửi</button>
     </div>
 </div>
 
 <script>
+// ==================== 1. JS CHO REVIEW ====================
+const LIMIT = 3; 
+const dbKey = 'banhEpHueReviews';
+let isShowAll = false;
+
+function refreshUI() {
+    const reviewList = document.getElementById('review-list');
+    const saved = JSON.parse(localStorage.getItem(dbKey)) || [];
+    reviewList.innerHTML = '';
+    const displayData = [...saved].reverse(); 
+    const needsTruncation = displayData.length > LIMIT;
+    const currentItems = isShowAll ? displayData : displayData.slice(0, LIMIT);
+
+    currentItems.forEach((r, index) => {
+        const starStr = '★'.repeat(r.rating) + ' '.repeat(5 - r.rating);
+        const div = document.createElement('div');
+        div.classList.add('review-item');
+        if (index === 0) div.style.borderLeft = '8px solid #ff9f43';
+        div.innerHTML = `
+            <h3>${r.shopName} - <span class="stars">${starStr}</span></h3>
+            <p class="review-text">${r.content}</p>
+        `;
+        reviewList.appendChild(div);
+    });
+
+    if (needsTruncation) {
+        const btn = document.createElement('button');
+        btn.innerText = isShowAll ? "Ẩn bớt bình luận" : "Hiện thêm bình luận (" + (displayData.length - LIMIT) + ")";
+        btn.style.cssText = "display:block; margin: 10px auto; background:none; border:1px solid #ff9f43; color:#ff9f43; padding:8px 20px; border-radius:20px; cursor:pointer; font-weight:bold;";
+        btn.onclick = function() {
+            isShowAll = !isShowAll;
+            refreshUI();
+        };
+        reviewList.appendChild(btn);
+    }
+}
+
+document.getElementById('submit-btn').onclick = function() {
+    const shopName = document.getElementById('shop-name').value;
+    const rating = parseInt(document.getElementById('rating').value);
+    const content = document.getElementById('review-content').value;
+
+    if (!shopName || !content) {
+        alert("⚠️ Vui lòng điền đủ thông tin!");
+        return;
+    }
+    const saved = JSON.parse(localStorage.getItem(dbKey)) || [];
+    saved.push({ shopName, rating, content });
+    localStorage.setItem(dbKey, JSON.stringify(saved));
+    document.getElementById('shop-name').value = '';
+    document.getElementById('review-content').value = '';
+    refreshUI();
+    alert("✅ Đã gửi đánh giá thành công!");
+};
+
+// ==================== 2. JS CHO VÒNG QUAY ====================
 const originalShops = [
     {name:"Bánh Ép Gia Di", address:"4 Phùng Chí Kiên, Huế", map:"https://www.google.com/maps?q=4 Phùng Chí Kiên, Huế&output=embed"},
     {name:"Bánh Ép Cây Sứ", address:"31 kiệt 103 Nhật Lệ, Huế", map:"https://www.google.com/maps?q=31 kiệt 103 Nhật Lệ, Huế&output=embed"},
@@ -451,27 +505,22 @@ const originalShops = [
 ];
 
 let shops = [...originalShops];
-
 const canvas = document.getElementById("wheel");
 const ctx = canvas.getContext("2d");
 const size = shops.length;
 const arc = (2 * Math.PI) / size;
-
 let currentRotation = 0;
 let spinning = false;
 
 function drawWheel(){
     ctx.clearRect(0,0,420,420);
-
     for(let i=0;i<shops.length;i++){
         const angle = i * arc + currentRotation;
-
         ctx.beginPath();
         ctx.moveTo(210,210);
         ctx.arc(210,210,200,angle,angle+arc);
         ctx.fillStyle = i%2===0 ? "#ffb703" : "#fb8500";
         ctx.fill();
-
         ctx.save();
         ctx.translate(210,210);
         ctx.rotate(angle + arc/2);
@@ -484,35 +533,24 @@ function drawWheel(){
 }
 
 function resetResult(){
-    document.getElementById("result").innerHTML = `
-        <h2>🎡 Đang quay tìm quán ngon cho bạn...</h2>
-    `;
+    document.getElementById("result").innerHTML = `<h2>🎡 Đang quay tìm quán ngon cho bạn...</h2>`;
 }
 
 function updateResult(shop){
     document.getElementById("result").innerHTML = `
         <h2>🎉 Hôm nay ăn: ${shop.name}</h2>
         <p><b>📍 Địa chỉ:</b> ${shop.address}</p>
-        <iframe src="${shop.map}" loading="lazy"></iframe>
+        <iframe src="${shop.map}" height="300" loading="lazy"></iframe>
     `;
 }
 
 function spinWheel(){
     if(spinning) return;
     spinning = true;
-
-    // reset dữ liệu hiển thị lượt cũ
     resetResult();
-
-    // reset mảng gốc đảm bảo xác suất luôn đều 10%
     shops = [...originalShops];
-
     const selectedIndex = Math.floor(Math.random() * shops.length);
-
-    const stopAngle =
-        (Math.PI * 2 * 5) +
-        (Math.PI * 2 - selectedIndex * arc - arc/2);
-
+    const stopAngle = (Math.PI * 2 * 5) + (Math.PI * 2 - selectedIndex * arc - arc/2);
     const start = currentRotation;
     const end = start + stopAngle;
     const duration = 4000;
@@ -521,65 +559,20 @@ function spinWheel(){
     function animate(time){
         const progress = Math.min((time - startTime) / duration, 1);
         const ease = 1 - Math.pow(1 - progress, 3);
-
         currentRotation = start + (end - start) * ease;
         drawWheel();
-
         if(progress < 1){
             requestAnimationFrame(animate);
-        }else{
+        } else {
             spinning = false;
             currentRotation = currentRotation % (2*Math.PI);
-
-            // kết quả đồng bộ tuyệt đối
             updateResult(shops[selectedIndex]);
         }
     }
-
     requestAnimationFrame(animate);
 }
 
-drawWheel();
-</script>
-
-</body>
-</section>
-
-<section id="contact">
-    <h2>📍 Liên hệ</h2>
-
-    <div class="contact-container">
-        <!-- Cột trái -->
-        <div class="contact-info card">
-            <p><b>🏠 Địa chỉ:</b> THPT Phan Đăng Lưu,Huế, Việt Nam</p>
-            <p><b>📧 Email:</b> sangthanhbiluoi12a1@gmail.com</p>
-            <p><b>📘 Facebook:</b> A1 23-26 PĐL Huế</p>
-            <p><b>📞 Hotline:</b> 0349 536 208</p>
-            <p>🥮 Huế là vùng đất cố đô nổi tiếng với vẻ đẹp trầm mặc, thơ mộng và nền ẩm thực tinh tế. Trong đó, bánh ép Huế là món ăn dân dã đặc sắc, được ép trên khuôn gang nóng, ăn kèm rau sống, đồ chua và nước mắm cay, mang hương vị giòn thơm khó quên.Hãy đến Huế để trải nghiệm hương vị bánh ép nóng hổi nhé!</p>
-        </div>
-
-        <!-- Cột phải -->
-        <div class="contact-map card">
-            <iframe
-                src="https://www.google.com/maps?q=GJ63+H4H, Quốc lộ 49B, Lưu Khánh, Dương Nỗ, Huế, Việt Nam&output=embed"
-                width="100%"
-                height="320"
-                style="border:0;border-radius:15px;"
-                allowfullscreen=""
-                loading="lazy">
-            </iframe>
-        </div>
-    </div>
-</section>
-
-<footer>
-    © 2026 Website trải nghiệm ẩm thực địa phương Bánh Ép Huế | Nhóm 2 Tổ 2 ❤️
-</footer>
-
-
-
-<script>
-
+// ==================== 3. JS CHO CHATBOT ====================
 function sendMessage(){
     let input = document.getElementById("userInput").value.toLowerCase();
     let chatBody = document.getElementById("chatBody");
@@ -595,34 +588,21 @@ function sendMessage(){
     document.getElementById("userInput").value = "";
     chatBody.scrollTop = chatBody.scrollHeight;
 }
+
 function toggleChat(){
     const chatBox = document.getElementById("chatbotBox");
-
     if(chatBox.style.display === "none" || chatBox.style.display === ""){
-        chatBox.style.display = "block"; // mở
+        chatBox.style.display = "block";
     } else {
-        chatBox.style.display = "none"; // đóng
+        chatBox.style.display = "none";
     }
 }
+
+// ==================== CHẠY KHI TẢI TRANG ====================
+window.onload = function() {
+    refreshUI();
+    drawWheel();
+};
 </script>
-<!-- nút bật tắt chatbot -->
-<div id="chatToggle" onclick="toggleChat()">💬</div>
-
-<!-- hộp chatbot -->
-<div id="chatbotBox" class="chatbot">
-    <div class="chat-header">
-        🤖 Chatbot Bánh Ép Huế
-        <span onclick="toggleChat()" style="float:right;cursor:pointer;">✖</span>
-    </div>
-
-    <div class="chat-body" id="chatBody">
-        <p><b>Bot:</b> Xin chào 👋 Bạn muốn ăn bánh ép giòn hay dẻo hôm nay?</p>
-    </div>
-
-    <div class="chat-input">
-        <input type="text" id="userInput" placeholder="Nhập câu hỏi...">
-        <button onclick="sendMessage()">Gửi</button>
-    </div>
-</div>
 </body>
 </html>
